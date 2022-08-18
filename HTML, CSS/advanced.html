@@ -3,7 +3,7 @@
   <head>
     <title>Image Search</title>
 		<meta name="viewport" content="width=device-width, inital-scale=1">
-		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/advanced.css">
   </head>
   <body>
     <header class="links">
@@ -13,11 +13,25 @@
     <div class="container">
       <img src="assets/Gayglers_2016_logo.svg" class="logo">
       <form action="https://www.google.com/search" class="search_bar">
-        <input type="text" name="q">
         <div class="center">
-          <input id="search" type="submit" value="Image Search">
-          <input id="lucky" type="submit" value="I'm Feeling Lucky">
+          <p>all these words</p>
+          <span>
+            <input autofocus type="text" name="as_q">
+          </span>
+          <p>this exact word or phrase</p>
+          <span>
+            <input type="text" name="as_epq">
+          </span>
+          <p>any of these words</p>
+          <span>
+            <input type="text" name="as_oq">
+          </span>
+          <p>none of these words.</p>
+          <span>
+            <input type="text" name="as_eq">
+          </span>
         </div>
+        <input id="search" type="submit" value="Advanced Search">
       </form>
       <div class="whitespace"></div>
     </div>

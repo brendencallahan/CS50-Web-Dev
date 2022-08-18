@@ -56,10 +56,10 @@ input[type="text"] {
 
 .center {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: column nowrap;
 	justify-content: center;
 	width: auto;
-	height: 50px;
+	height: 255px;
 }
 
 input[type="submit"] {
@@ -67,18 +67,14 @@ input[type="submit"] {
 	background-color: $blue;
 	font-weight: 300;
 	border-radius: 4px;
-	margin-inline: 10px;
-	font-size: medium
+	margin-inline: 0px;
+	font-size: medium;
 }
 
 #search {
 	width: 175px;
 	height: 35px;
-}
-
-#lucky {
-	width: 175px;
-	height: 35px;
+    margin-top: 70px
 }
 
 .whitespace {
