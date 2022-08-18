@@ -1,6 +1,6 @@
 # CS50
 
-### {All completed assignments for Harvard's Intro to Computer Science course: CS50 (2022)}
+### {All completed assignments for Harvard's Web Programming With Python and Javascript course: CS50 Web Programming (2022)}
 
 ## Favorite Project
 
