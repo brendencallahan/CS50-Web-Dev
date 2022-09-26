@@ -1,7 +1,8 @@
 body, html {
   margin: 0px;
   padding: 0px;
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .container {
   display: flex;
@@ -10,7 +11,8 @@ body, html {
   justify-content: center;
   height: calc(100vh - 50px);
   width: 100vw;
-  margin: 0; }
+  margin: 0;
+}
 
 .links {
   height: 50px;
@@ -18,54 +20,63 @@ body, html {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .links a {
   text-decoration: none;
   font-size: large;
   margin-inline: 40px;
   margin-top: 15px;
-  color: black; }
+  color: black;
+}
 
 .logo {
   width: auto;
   height: auto;
-  margin: 0; }
+  margin: 0;
+}
 
 .search_bar {
   height: 100px;
   width: auto;
-  margin-top: 10px; }
+  margin-top: 10px;
+}
 
-input[type="text"] {
+input[type=text] {
   margin: 0px;
   padding: 10px;
   width: 500px;
   height: 15px;
   border-radius: 50px;
-  font-size: medium; }
+  font-size: medium;
+}
 
 .center {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   width: auto;
-  height: 255px; }
+  height: 255px;
+}
 
-input[type="submit"] {
+input[type=submit] {
   margin-top: 25px;
   background-color: #4285f4;
   font-weight: 300;
   border-radius: 4px;
   margin-inline: 0px;
-  font-size: medium; }
+  font-size: medium;
+}
 
 #search {
   width: 175px;
   height: 35px;
-  margin-top: 70px; }
+  margin-top: 70px;
+}
 
 .whitespace {
-  height: 400px; }
+  height: 400px;
+}
 
 /*# sourceMappingURL=advanced.css.map */
