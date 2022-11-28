@@ -7,4 +7,6 @@
         <li>{{ task }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'tasks:add' %}">Add a new task</a>
+
 {% endblock %}
