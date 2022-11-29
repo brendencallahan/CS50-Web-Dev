@@ -9,10 +9,10 @@ def index(request):
         "entries": util.list_entries()
     })
 
-def mdrender(request, name):
-    if util.get_entry(name) is not None:
+def mdrender(request, entry_name):
+    if util.get_entry(entry_name) is not None:
         return render(request, "encyclopedia/generic.html", {
-            "markdown": util.get_entry(name)
+            "markdown": util.get_entry(entry_name)
         })
     else:
         return HttpResponseRedirect("url 'index'")
