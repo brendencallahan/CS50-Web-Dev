@@ -13,7 +13,7 @@ def index(request):
 def mdrender(request, entry_name):
     markdown_file = util.get_entry(entry_name)
     if markdown_file is not None:
-        return render(request, "encyclopedia/generic.html", {
+        return render(request, "encyclopedia/generic_entry.html", {
             "markdown": markdown_file
         })
     else:
