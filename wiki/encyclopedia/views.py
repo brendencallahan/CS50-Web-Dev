@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from . import util
 
@@ -16,4 +17,4 @@ def mdrender(request, entry_name):
             "markdown": markdown_file
         })
     else:
-        return HttpResponseRedirect("url 'index'")
+        return render(request, "encyclopedia/error_markdown_file_not_found.html")
