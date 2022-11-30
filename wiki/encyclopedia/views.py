@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from . import util
 
+# hmmm
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
