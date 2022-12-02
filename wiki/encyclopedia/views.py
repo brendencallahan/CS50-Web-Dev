@@ -19,3 +19,9 @@ def mdrender(request, entry_name):
         })
     else:
         return render(request, "encyclopedia/error_markdown_file_not_found.html")
+
+def search(request, search_text):
+    if search_text in util.list_entries():
+        return mdrender(request, search_text)
+    else: 
+        return render(request, "encyclopedia/error_markdown_file_not_found.html")
