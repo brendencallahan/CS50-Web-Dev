@@ -7,9 +7,15 @@ from . import util
 # hmmm
 
 def index(request):
-    return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
-    })
+    
+    if request.GET.get("q", None) == None:
+        return render(request, "encyclopedia/index.html", {
+            "entries": util.list_entries()
+        })
+    
+    else:
+        return mdrender(request, request.GET.get("q"))
+
 
 def mdrender(request, entry_name):
     markdown_file = util.get_entry(entry_name)
