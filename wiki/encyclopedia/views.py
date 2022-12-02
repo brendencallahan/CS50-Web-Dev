@@ -7,14 +7,24 @@ from . import util
 # hmmm
 
 def index(request):
-    
-    if request.GET.get("q", None) == None:
+
+    search_text = request.GET.get("q", None)
+    entries = util.list_entries()
+
+    if search_text == None:
         return render(request, "encyclopedia/index.html", {
-            "entries": util.list_entries()
+            "entries": entries
         })
     
+    elif search_text not in entries:
+
+        culled_entries = list(filter(lambda x: search_text in x, entries))
+        return render(request, "encyclopedia/search_results.html", {
+            "entries": culled_entries
+        })
+
     else:
-        return mdrender(request, request.GET.get("q"))
+        return mdrender(request, search_text)
 
 
 def mdrender(request, entry_name):
