@@ -37,9 +37,10 @@ def mdrender(request, entry_name):
         return render(request, "encyclopedia/error_markdown_file_not_found.html")
 
 def create_page(request):
-    if request.method == 'GET':
-        return render(request, "encyclopedia/create_page.html")
-    
-    #elif request.method == 'POST':
-    
-    #else: 
+    if request.method == 'POST':
+        return render(request, "")
+
+    else:
+        return render(request, "encyclopedia/create_page.html", {
+            "create_page_form":create_page_form
+        }) 
