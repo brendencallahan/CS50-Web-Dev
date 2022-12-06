@@ -42,5 +42,4 @@ def create_page(request):
 
     else:
         return render(request, "encyclopedia/create_page.html", {
-            "create_page_form":create_page_form
         }) 
