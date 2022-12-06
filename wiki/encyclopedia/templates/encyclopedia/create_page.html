@@ -6,4 +6,14 @@
 
 {% block body %}
     <h1>Create New Page</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="user_title">Entry Title</label>
+        <input id="user_title" name="user_title" type="text">
+        <textarea id="user_markdown" name="user_markdown">
+            Entry goes here
+        </textarea>
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}
