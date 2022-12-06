@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
+from django.contrib import messages
 
 from . import util
 
@@ -49,12 +50,18 @@ def mdrender(request, entry_name):
 
 def create_page(request):
 
+    entries = util.list_entries()
+
     # Validate form method and info
     if request.method == 'POST':
         form = MyForm(request.POST)
         if form.is_valid():
             user_markdown = form.cleaned_data['user_markdown']
             user_title = form.cleaned_data['user_title']
+
+            # Check if entry exists
+            if user_title in entries:
+                return render(request, "encyclopedia/error_title_taken.html")
 
             util.save_entry(user_title, user_markdown)
 
