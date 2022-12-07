@@ -1,5 +1,4 @@
-import os
-import markdown2
+from markdown2 import Markdown
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -42,8 +41,12 @@ def mdrender(request, entry_name):
 
     # Get markdown file if it exists otherwise return an error
     if markdown_file is not None:
+
+        markdowner = Markdown()
+        markdown = markdowner.convert(markdown_file)
+
         return render(request, "encyclopedia/generic_entry.html", {
-            "markdown": markdown_file,
+            "markdown": markdown,
             "entry_name": entry_name
         })
     else:
@@ -90,7 +93,6 @@ def edit_page(request, entry_name):
             util.save_entry(user_title, user_markdown)
 
             url = reverse(mdrender, kwargs={'entry_name': user_title})
-            #url = reverse(user_title)
             return HttpResponseRedirect(url)
     
 
