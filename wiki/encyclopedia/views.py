@@ -1,3 +1,4 @@
+import random
 from markdown2 import Markdown
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -106,3 +107,8 @@ def edit_page(request, entry_name):
             })
         else:
             return render(request, "encyclopedia/error_markdown_file_not_found.html")
+
+def random_page(request):
+    random_choice = random.choice(util.list_entries())
+    url = reverse(mdrender, kwargs={'entry_name': random_choice})
+    return HttpResponseRedirect(url)
