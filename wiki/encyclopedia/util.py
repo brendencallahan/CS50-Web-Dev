@@ -24,6 +24,15 @@ def save_entry(title, content):
         default_storage.delete(filename)
     default_storage.save(filename, ContentFile(content))
 
+def delete_entry(title):
+    """
+    Deletes an encyclopedia entry.
+    """
+    filename = f"entries/{title}.md"
+    if default_storage.exists(filename):
+        default_storage.delete(filename)
+    else:
+        return None
 
 def get_entry(title):
     """

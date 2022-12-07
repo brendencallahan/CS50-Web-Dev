@@ -84,6 +84,9 @@ def edit_page(request, entry_name):
             user_markdown = form.cleaned_data['user_markdown']
             user_title = form.cleaned_data['user_title']
 
+            if entry_name != user_title:
+                util.delete_entry(entry_name)
+
             util.save_entry(user_title, user_markdown)
 
             url = reverse(mdrender, kwargs={'entry_name': user_title})
