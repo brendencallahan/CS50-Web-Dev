@@ -1,9 +1,15 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Consider Donating
+    {{ entry_name }}
 {% endblock %}
 
+
+{% block nav %}
+    <div>
+        <a href="{% url 'edit_page' entry_name %}">Edit Page</a>
+    </div>
+{% endblock %}
 
 
 {% block body %}

@@ -43,7 +43,8 @@ def mdrender(request, entry_name):
     # Get markdown file if it exists otherwise return an error
     if markdown_file is not None:
         return render(request, "encyclopedia/generic_entry.html", {
-            "markdown": markdown_file
+            "markdown": markdown_file,
+            "entry_name": entry_name
         })
     else:
         return render(request, "encyclopedia/error_markdown_file_not_found.html")
@@ -75,3 +76,28 @@ def create_page(request):
             'form': form
         })
 
+
+def edit_page(request, entry_name):
+    if request.method == 'POST':
+        form = MyForm(request.POST)
+        if form.is_valid():
+            user_markdown = form.cleaned_data['user_markdown']
+            user_title = form.cleaned_data['user_title']
+
+            util.save_entry(user_title, user_markdown)
+
+            url = reverse(mdrender, kwargs={'entry_name': user_title})
+            #url = reverse(user_title)
+            return HttpResponseRedirect(url)
+    
+
+    else:
+        markdown_file = util.get_entry(entry_name)
+        form = MyForm()
+        if markdown_file is not None:
+            return render(request, "encyclopedia/edit_page.html", {
+                "markdown": markdown_file,
+                "entry_name": entry_name
+            })
+        else:
+            return render(request, "encyclopedia/error_markdown_file_not_found.html")
