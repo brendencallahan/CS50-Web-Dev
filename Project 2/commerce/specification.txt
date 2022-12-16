@@ -15,8 +15,11 @@ Complete the implementation of your auction site. You must fulfill the following
         
     Active Listings Page: The default route of your web application should let users view all of the currently active auction listings. 
     For each active listing, this page should display (at minimum) the title, description, current price, and photo (if one exists for the listing).
+        
+        
     Listing Page: Clicking on a listing should take users to a page specific to that listing. 
     On that page, users should be able to view all details about the listing, including the current price for the listing.
+    Additionaly:
         
         If the user is signed in, the user should be able to add the item to their “Watchlist.” If the item is already on the watchlist, the user should be able to remove it.
 
