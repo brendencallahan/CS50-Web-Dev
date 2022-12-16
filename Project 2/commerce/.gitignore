@@ -1,0 +1,5 @@
+__pycache__
+auctions/__pycache__
+auctions/migrations/__pycache__
+commerce/__pycache__
+commerce/migrations/__pycache__
