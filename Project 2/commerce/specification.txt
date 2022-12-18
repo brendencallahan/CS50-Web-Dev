@@ -14,7 +14,7 @@ Complete the implementation of your auction site. You must fulfill the following
 
     They should be able to specify a title for the listing, a text-based description, and what the starting bid should be.
 
-    Users should also optionally be able to provide a URL for an image for the listing and/or a category (e.g. Fashion, Toys, Electronics, Home, etc.).
+    Users should also optionally be able to provide a URL for an image for the listing and a category (e.g. Fashion, Toys, Electronics, Home, etc.).
 
 
     Active Listings Page: The default route of your web application should let users view all of the currently active auction listings.

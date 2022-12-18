@@ -40,4 +40,8 @@ class Listing(models.Model):
     category = models.CharField(max_length=50, choices=LISTING_CATEGORIES, default=None)
     bids = models.ForeignKey(Bid, on_delete=models.CASCADE)
     comments = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User, related_name="user_listings")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Watchlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    listings = models.ManyToManyField(Listing, related_name="watchlists")
