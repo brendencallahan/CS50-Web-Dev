@@ -1,3 +1,4 @@
+.vscode
 __pycache__
 auctions/__pycache__
 auctions/migrations/__pycache__
