@@ -7,13 +7,21 @@
     <title>Hello</title>
     <link rel="stylesheet" href="main.css">
     <script>
-        let hello = () => {alert('Hello, world!')}
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').onsubmit = function() {
+                const name = document.querySelector('#name').value;
+                alert(`Hello, ${name}!`);
+            }
+        });
     </script>
 </head>
 <body>
     <main>
         <h1>Hello!</h1>
-        <button onclick="hello()">Click Here</button>
+    <form>
+        <input autofocus id="name" placeholder="Name" type="text">
+        <input type="submit">
+    </form>
     </main>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+
+            // Change font color to red
+            document.querySelector('.red').onclick = function() {
+                document.querySelector('.hello').style.color = 'red';
+            };
+
+
+            // Change font color to blue
+            document.querySelector('.blue').onclick = function() {
+                document.querySelector('.hello').style.color = 'blue';
+            };
+
+            // Change font color to green
+            document.querySelector('.green').onclick = () => {
+                document.querySelector('.hello').style.color = 'green';
+            };
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1 class="hello">Hello!</h1>
+    <button data-color="red">Red</button>
+    <button data-color="blue">Blue</button>
+    <button data-color="green">Green</button>
+</body>
+</html>
