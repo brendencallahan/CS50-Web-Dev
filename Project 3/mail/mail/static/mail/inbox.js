@@ -17,28 +17,9 @@ async function get_emails(mailbox) {
   try {
     const response = await fetch(`/emails/${mailbox}`);
     const data = await response.json();
-    console.log(data)
     return data;
 
   // Handle errors
-  } catch(err) {
-    console.log(err);
-  }
-}
-
-async function get_email(email_id) {
-
-  //Use API to singular email and parse response
-  try {
-    const response = await fetch(`/emails/${email_id}`);
-    const data = response.json();
-
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-
-
   } catch(err) {
     console.log(err);
   }
@@ -52,10 +33,6 @@ async function send_email(event) {
   const email_recipient = document.querySelector('#compose-recipients').value;
   const email_subject = document.querySelector('#compose-subject').value;
   const email_body = document.querySelector('#compose-body').value;
-
-  console.log(email_recipient);
-  console.log(email_subject);
-  console.log(email_body);
 
   // post email to database, using api
   try {
@@ -89,6 +66,16 @@ function compose_email() {
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+}
+
+function reply_email() {
+  //TODO
+  //TODO
+  //TODO
+  //TODO
+  //TODO
+  //TODO
+  return;
 }
 
 async function load_mailbox(mailbox) {
@@ -132,14 +119,14 @@ async function load_mailbox(mailbox) {
     email_list.append(email_list_item);
 
     // Add styling
-    sender.classList.add('pr-0');
+    sender.classList.add('pr-2');
     timestamp.classList.add('ml-auto');
     email_list.classList.add('list-group');
     email_list_item.classList.add('list-unstyled');
     email_list_button.classList.add('list-group-item', 'w-100', 'd-inline-flex', 'rounded');
 
     // Conditional styling
-    if (!element.archived) {
+    if (!element.read) {
       email_list_button.classList.add('bg-white');
     } else {
       email_list_button.classList.add('bg-secondary');
@@ -156,4 +143,52 @@ async function load_mail(email_id) {
   document.querySelector('#mail-view').style.display = 'block';
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
+
+  // Set read element to true
+  await fetch(`/emails/${email_id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      read: true,
+    })
+  });
+
+  // Get email
+  const email_resp = await fetch(`/emails/${email_id}`);
+  const email = await email_resp.json();
+
+  // Create elements
+  const page = document.querySelector('#mail-view');
+  const sender = document.createElement('p');
+  const recipients = document.createElement('p');
+  const subject = document.createElement('h3');
+  const body = document.createElement('p');
+  const timestamp = document.createElement('p');
+  const reply_button = document.createElement('button');
+  const archive_button = document.createElement('button');
+
+  // Fill elements with text
+  sender.innerHTML = email.sender;
+  recipients.innerHTML = email.recipients;
+  subject.innerHTML = email.subject;
+  body.innerHTML = email.body;
+  timestamp.innerHTML = email.timestamp;
+  reply_button.innerHTML = (`Reply`);
+  archive_button.innerHTML = (`${!email.archived ? 'Archive' : 'Unarchive'}`)
+
+  // Add button functionality
+  reply_button.addEventListener('click', () => reply_email(email_id))
+  archive_button.addEventListener('click', async () => {
+    await fetch(`/emails/${email_id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        archived: !email.archived,
+      })
+    });
+    await load_mailbox(`${email.archived ? 'archive' : 'inbox'}`);
+  });
+
+  // Clear page so it doesn't stack with new emails
+  page.innerHTML = ('');
+  // Append to DOM
+  page.append(sender, recipients, subject, body, timestamp, reply_button, archive_button);
 }
