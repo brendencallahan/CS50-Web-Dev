@@ -8,20 +8,16 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        fetch('https://official-joke-api.appspot.com/random_joke')
+        fetch('https://catfact.ninja/fact')
         .then(response => response.json())
         .then(data => {
-            const setup = data.setup;
-            const punchline = data.punchline;
+            const fact = data.fact;
 
-            const h1 = document.createElement('h1');
-            const h2 = document.createElement('h2');
+            const h1 = document.createElement('h3');
 
-            h1.innerHTML = setup;
-            h2.innerHTML = punchline;
+            h1.innerHTML = fact;
 
             document.querySelector('body').append(h1);
-            document.querySelector('body').append(h2);
         });
     });
 
