@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        fetch('https://official-joke-api.appspot.com/random_joke')
+        .then(response => response.json())
+        .then(data => {
+            const setup = data.setup;
+            const punchline = data.punchline;
+
+            const h1 = document.createElement('h1');
+            const h2 = document.createElement('h2');
+
+            h1.innerHTML = setup;
+            h2.innerHTML = punchline;
+
+            document.querySelector('body').append(h1);
+            document.querySelector('body').append(h2);
+        });
+    });
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

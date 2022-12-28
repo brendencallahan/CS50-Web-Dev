@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelector('#submit').disabled = true;
+
+            document.querySelector('#task').onkeyup = () => {
+                if (document.querySelector('#task').value.length > 0) {
+                    document.querySelector('#submit').disabled = false;
+                } else {
+                    document.querySelector('#submit').disabled = true;
+                }
+            }
+
+            document.querySelector('form').onsubmit = () => {
+                event.preventDefault();
+
+                const task = document.querySelector('#task').value;
+
+                const li = document.createElement('li');
+                li.innerHTML = task;
+
+                document.querySelector('#tasks').append(li);
+
+                document.querySelector('#task').value = '';
+                document.querySelector('#submit').disabled = true;
+            }
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <form>
+        <input id="task" placeholder="New Task" type="text">
+        <input id="submit" value="Submit" type="submit">
+    </form>
+    <ul id="tasks">
+    </ul>
+</body>
+</html>

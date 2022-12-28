@@ -6,23 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colors</title>
     <script>
-        document.addEventListener('DOMContentLoaded', function(){
+        document.addEventListener('DOMContentLoaded', function() {
 
-            // Change font color to red
-            document.querySelector('.red').onclick = function() {
-                document.querySelector('.hello').style.color = 'red';
-            };
-
-
-            // Change font color to blue
-            document.querySelector('.blue').onclick = function() {
-                document.querySelector('.hello').style.color = 'blue';
-            };
-
-            // Change font color to green
-            document.querySelector('.green').onclick = () => {
-                document.querySelector('.hello').style.color = 'green';
-            };
+            document.querySelector('select').onchange = function() {
+                document.querySelector('.hello').style.color = this.value;
+            }
 
         });
 
@@ -30,8 +18,11 @@
 </head>
 <body>
     <h1 class="hello">Hello!</h1>
-    <button data-color="red">Red</button>
-    <button data-color="blue">Blue</button>
-    <button data-color="green">Green</button>
+    <select>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+    </select>
 </body>
 </html>
