@@ -8,17 +8,23 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        fetch('https://catfact.ninja/fact')
-        .then(response => response.json())
-        .then(data => {
-            const fact = data.fact;
+        async function getCatFact() {
+            try {
+                const response = await fetch('https://catfact.ninja/fact')
+                const data = await response.json()
+                const fact = data.fact;
 
-            const h1 = document.createElement('h3');
+                const h1 = document.createElement('h3');
 
-            h1.innerHTML = fact;
+                h1.innerHTML = fact;
 
-            document.querySelector('body').append(h1);
-        });
+                document.querySelector('body').append(h1);
+            } catch(err) {
+                console.log(err)
+            }
+        }
+
+        document.querySelector('button').onclick = getCatFact;
     });
 
 
@@ -26,6 +32,6 @@
     </script>
 </head>
 <body>
-
+    <button>Get Fact</button>
 </body>
 </html>
