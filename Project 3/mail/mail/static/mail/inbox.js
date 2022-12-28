@@ -68,16 +68,6 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
-function reply_email() {
-  //TODO
-  //TODO
-  //TODO
-  //TODO
-  //TODO
-  //TODO
-  return;
-}
-
 async function load_mailbox(mailbox) {
 
   // Show the mailbox and hide other views
@@ -175,8 +165,17 @@ async function load_mail(email_id) {
   reply_button.innerHTML = (`Reply`);
   archive_button.innerHTML = (`${!email.archived ? 'Archive' : 'Unarchive'}`)
 
-  // Add button functionality
-  reply_button.addEventListener('click', () => reply_email(email_id))
+
+  reply_button.addEventListener('click', () =>  {
+
+  // Get compose page and prefill fields
+    compose_email();
+    document.querySelector('#compose-recipients').value = `${recipients.innerHTML}`;
+    document.querySelector('#compose-subject').value = `Re: ${subject.innerHTML}`;
+    document.querySelector('#compose-body').value = `On ${timestamp.innerHTML} ${sender.innerHTML} wrote: ${body.innerHTML}`;
+  });
+
+  // Archive/Unarchive and redirect to inbox or archive
   archive_button.addEventListener('click', async () => {
     await fetch(`/emails/${email_id}`, {
       method: 'PUT',
