@@ -170,7 +170,7 @@ async function load_mail(email_id) {
 
   // Get compose page and prefill fields
     compose_email();
-    document.querySelector('#compose-recipients').value = `${recipients.innerHTML}`;
+    document.querySelector('#compose-recipients').value = `${sender.innerHTML}`;
     document.querySelector('#compose-subject').value = `Re: ${subject.innerHTML}`;
     document.querySelector('#compose-body').value = `On ${timestamp.innerHTML} ${sender.innerHTML} wrote: ${body.innerHTML}`;
   });
